@@ -62,6 +62,7 @@ function handleStatusChange(session) {
       //promptLogin();
       clearAction();
     }
+    alert(sesion_activa);
 }
 
 //Check the current permissions to set the page elements.

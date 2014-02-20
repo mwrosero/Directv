@@ -919,8 +919,7 @@ function guardarPronosticoCompleto(){
 function publicarFb(){
     var res_loc = $('#marcador_local').val();
     var res_vis = $('#marcador_visitante').val();
-
-    alert(0);
+    
     //alert('Mi pronóstico DIRECTV por la fecha #'+num_fecha+' del Campeonato es: '+nombre_eq_local+': '+res_loc+' vs. '+nombre_eq_visitante+': '+res_vis);
 
     if(sesion_activa){
@@ -930,8 +929,7 @@ function publicarFb(){
         FB.login(function(){
             FB.api('/me/feed', 'post', {message: 'Mi pronóstico DIRECTV por la fecha #'+num_fecha+' del Campeonato es: '+nombre_eq_local+': '+res_loc+' vs. '+nombre_eq_visitante+': '+res_vis});
         }, {scope: 'publish_actions'});
-    }
-    alert(1);    
+    }    
 }
 
 function publicarFb_Completo(){
