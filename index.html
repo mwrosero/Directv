@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- <meta name="viewport" content="user-scalable=yes, initial-scale=0.75, maximum-scale=0.75, minimum-scale=0.5, target-densitydpi=medium-dpi" /> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.5 user-scalable=yes">
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.2.0.css" />
+        
+        <title>DirectTV</title>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.mobile-1.2.0.js"></script>
+
+        <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.touch-punch.min.js"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#sortable" ).sortable();
+                $( "#sortable" ).bind( "sortstop", function(event, ui) {
+                    $( "#sortable" ).sortable( "refresh" );
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <!--========================= LOGIN PAGE ==========================-->
+        <div id="login-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido" class="login-contenido">
+                    <h2 class="label_page">BIENVENIDO</h2>
+                    </br></br>
+                    <p><input type="email" id="user_txt" name="user_txt" class="soloEmail" placeholder="Email"></p>
+                    <p><input type="text" id="pass_txt" name="pass_txt" style="-webkit-text-security: disc;" placeholder="Contraseña"></p>
+                    </br>
+                    <a href="#" onclick="goTo('#olvido-page')"><p class="label_olvidar">¿Olvidaste tu contraseña?</p></a>
+                    <img id="btn_iniciar" src="images/btn_iniciar.png" onclick="login();">
+                    <a href="#" onclick="goTo('#registro-page')"><p class="label_nueva">¿Eres nuevo en Mi Pronóstico? Regístrate aquí</p></a>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= OLVIDO PAGE ==========================-->
+        <div id="olvido-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <a href="#login-page">
+                    <img src="images/btn_back.png" class="btn_back_ios">
+                </a>
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido" class="login-contenido">
+                    <h2 class="label_page_white">¿Olvidaste tu contraseña?</h2>
+                    </br></br>
+                    <p><input type="email" id="user_txt_ol" name="user_txt" class="soloEmail" placeholder="Email"></p>
+                    </br>
+                    <img id="btn_enviar" src="images/btn_enviar.png" onclick="recuperarClave();">
+                </div>
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!--========================= REGISTRO PAGE ==========================-->
+        <div id="registro-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <a href="#login-page">
+                    <img src="images/btn_back.png" class="btn_back_ios">
+                </a>
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido">
+                    <div id="btn_add" class="porta-imagen" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+                        <img id="img-seleccionada" src="">
+                    </div>
+                    <p><input type="text" data-clear-btn="true" id="txt_nombre" name="txt_nombre" placeholder="Nombres" class="soloTexto"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_ciudad" name="txt_ciudad" placeholder="Ciudad" class="soloTexto"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_telefono" name="txt_telefono" placeholder="Teléfono" class="soloNumero"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_email" name="txt_email" placeholder="Email" class="soloEmail"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_clave" name="txt_clave" placeholder="Contraseña" style="-webkit-text-security: disc;"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_id" name="txt_id" placeholder="DIRECTV ID" class="soloNumero"></p>
+                    <img id="btn_registrar" class="btn" src="images/btn_registrar.png">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= HOME PAGE ==========================-->
+        <div id="home-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido">
+                    <img class="img_home" id="pro_fecha" src="images/fecha_fecha.png">
+                    <img class="img_home" id="pro_completo" src="images/pronostico_completo.png">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer">
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico_sel.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= FECHA PAGE ==========================-->
+        <div id="fecha-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido" class="contenido_fijo">
+                    <h2 class="label_page">FECHA A FECHA</h2>
+                    <div class="box-interna">
+                        <p id="fecha_pronostico_fecha">FECHA 14 - 16 JUNIO 2014</p>
+                        <img class="sep_peq" src="images/separador_peq.png">
+                        <p id="canal_pronostico_fecha">Transmitido por Canal 778</p>
+                        <div class="vertical-div">
+                            <p id="nombre_equipo_local">Emelec</p>
+                            <img class="escudos" id="escudo_local" src="images/emelec.png">
+                            <input type="text" name="marcador_local" id="marcador_local" class="soloNumero">
+                        </div>
+                        <div class="vertical-div vertical-div2">
+                            <img src="images/label_vs.png" class="img_vs">
+                        </div>
+                        <div class="vertical-div">
+                            <p id="nombre_equipo_visitante">Barcelona</p>
+                            <img class="escudos" id="escudo_visitante" src="images/barcelona.png">
+                            <input type="text" name="marcador_visitante" id="marcador_visitante" class="soloNumero">
+                        </div>
+                    </div>
+                    <img id="btn_guardar_pro_fecha" class="btn" src="images/btn_guardar.png">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer">
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico_sel.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= COMPLETO PAGE ==========================-->
+        <div id="completo-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido" class="contenido_fijo">
+                    <h2 class="label_page">PRONÓSTICO COMPLETO</h2>
+                    <div class="box-interna-scroll">
+                        <p id="fecha_pronostico_fecha">Escoge tu orden</p>
+                        <img class="sep_peq" src="images/separador_peq.png">
+                        <div class="contenedor-equipos">
+                            <ul data-role="listview" data-inset="true" data-theme="d" id="sortable">
+                                <li><img src="images/emelec.png"><span>Emelec</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img id="btn_guardar_pro_completo" class="btn" src="images/btn_guardar.png">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer">
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico_sel.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= PERFIL PAGE ==========================-->
+        <div id="perfil-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido">
+                    <h2 class="label_page">MI PERFIL</h2>
+                    <div id="btn_add_perfil" class="porta-imagen">
+                        <img id="img-perfil" src="">
+                    </div>
+                    <p class="label_editar" id="btn_editar">Editar Perfil</p>
+                    <p><input type="text" data-clear-btn="true" id="txt_nombre_ed" name="txt_nombre_ed" disabled class="soloTexto" placeholder="Nombres"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_ciudad_ed" name="txt_ciudad_ed" disabled class="soloTexto" placeholder="Ciudad"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_telefono_ed" name="txt_telefono_ed" disabled class="soloNumero" placeholder="Teléfono"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_email_ed" name="txt_email_ed" disabled class="soloEmail" placeholder="Email"></p>
+                    <p><input type="text" data-clear-btn="true" id="txt_id_ed" name="txt_id_ed" disabled class="soloNumero" placeholder="DIRECTV ID"></p>
+                    <img id="btn_cerrar_sesion" class="btn" src="images/btn_cerrar_sesion.png">
+                    <img id="btn_guardar" class="btn" src="images/btn_guardar.png">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico_sel.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= BASES PAGE ==========================-->
+        <div id="bases-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido" class="contenido_fijo">
+                    <h2 class="label_page">BASES LEGALES</h2>
+                    <div class="box-interna-scroll-bases">
+                        <img class="sep_peq" src="images/separador_peq.png">
+                        <div class="contenedor-equipos bases_leg">
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
+                            </p>
+                            <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+                            </p>
+                            <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+                            </p>
+                            <p>Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia.</p>
+                        </div>
+                    </div>
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico_sel.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= PREMIOS PAGE ==========================-->
+        <div id="premios-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido">
+                    <h2 class="label_page">PREMIOS</h2>
+                    <img class="img_premio" src="images/premio.jpg">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico_sel.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= TABLAS PAGE ==========================-->
+        <div id="tablas-page" data-role="page" class="type-home">
+            <div class="fixed-header">
+                <img src="images/title_header.png">
+            </div>
+            <div class="contenedor">
+                <div id="contenido">
+                    <h2 class="label_page">TABLA DE POSICIONES</h2>
+                    <img class="img_tabla" src="images/tabla_posiciones.png">
+                </div>
+                <img class="nada_mas" src="images/nada_mas_importa.png">
+            </div>
+            <div data-role="footer" data-theme="a" class="fixed-footer" >
+                <div data-role="navbar" data-iconpos="bottom" class="nav-glyphish-example"  data-grid="d">
+                    <ul class="menu-ul">
+                        <li><a href="#home-page" data-transition="none" class="bottom_menu"><img src="images/home_ico.png" /></a></li>
+                        <li><a href="#perfil-page" data-transition="none" class="bottom_menu"><img src="images/perfil_ico.png" /></a></li>
+                        <li><a href="#bases-page" data-transition="none" class="bottom_menu"><img src="images/bases_ico.png" /></a></li>
+                        <li><a href="#premios-page" data-transition="none" class="bottom_menu"><img src="images/premios_ico.png" /></a></li>
+                        <li><a href="#tablas-page" data-transition="none" class="bottom_menu"><img src="images/tabla_ico_sel.png" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--========================= NO HAY INTERNET PAGE ==========================-->
+        <div id="internet-page" data-role="page" class="type-home">
+            <h2 class="no-internet">Sin conexión a internet.</h2>
+        </div>
+
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="cdv-plugin-fb-connect.js"></script>
+        <!-- facebook js sdk -->
+        <script src="facebook-js-sdk.js"></script> 
+          
+        <!--<script src="js/_config.js"></script>-->
+        <script src="js/ui.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/feed.js"></script>
+        <script src="js/graph_api.js"></script>
+        <script src="js/requests.js"></script>
+        
+        <script>
+          // Initialize the Facebook SDK
+          document.addEventListener('deviceready', function() {       
+              FB.init({
+                  appId: '503703603083308',
+                  nativeInterface: CDV.FB,
+                  useCachedDialogs: false
+              });
+          
+              FB.getLoginStatus(handleStatusChange);
+          
+              authUser();
+              updateAuthElements();
+              //llenarListaAmigos();
+          });
+
+          app.initialize();
+      </script>
+
+
+
+
+
+    </body>
+</html>
