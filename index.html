@@ -399,6 +399,12 @@
           });
 
           app.initialize();
+
+            window.addEventListener('load', function() {
+                document.body.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                }, false);
+            }, false);
       </script>
 
 
