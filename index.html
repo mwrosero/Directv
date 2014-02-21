@@ -406,6 +406,12 @@
                 }, false);
             }, false);*/
 
+            window.addEventListener('load', function() {
+                $('.box-interna-scroll').addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                }, false);
+            }, false);
+
             var doubleTouchStartTimestamp = 0;
             $(document).bind("touchstart", function (event) {
                 var now = +(new Date());
