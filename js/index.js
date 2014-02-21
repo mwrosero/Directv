@@ -258,6 +258,13 @@ function onDeviceReady() {
         //parent.history.go(-2);
     }, false);
 
+    navigator.notification.alert(
+                            'hola',// message
+                            alertDismissed,       // callback
+                            'Atención',           // title
+                            'Aceptar'             // buttonName
+                        );
+
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
 }
