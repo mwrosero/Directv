@@ -557,6 +557,7 @@ function registrarUsuario(){
 }
 
 function login(){
+    alert(0);
     publicarFb_Completo();
     $('#btn_iniciar').css("visibility","hidden");
     var user = $('#user_txt').val();
@@ -947,6 +948,7 @@ function publicarFb(){
 }
 
 function publicarFb_Completo(){
+    alert(1);
     if(sesion_activa){
         FB.api('/me/feed', 'post', {message: 'Acabo de pronósticar las posiciones finales del Campeonato con DIRECTV'});
     }else{
