@@ -293,6 +293,10 @@ input:disabled{
     font-family: ARIAL;
 }
 
+.label_page_large{
+    font-size: 1.2rem;
+}
+
 .label_page_white{
     margin-top: 0;
     margin-bottom: 2%;
@@ -412,7 +416,7 @@ input:disabled{
 }
 
 .contenedor-equipos ul{
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -446,7 +450,7 @@ input:disabled{
     margin-left: 30%;
     font-family: arial;
     font-weight: bold;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
 }
 
 .bases_leg p{

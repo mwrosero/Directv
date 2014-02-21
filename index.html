@@ -215,7 +215,7 @@
             </div>
             <div class="contenedor">
                 <div id="contenido" class="contenido_fijo">
-                    <h2 class="label_page">PRONÓSTICO COMPLETO</h2>
+                    <h2 class="label_page label_page_large">PRONÓSTICO COMPLETO</h2>
                     <div class="box-interna-scroll">
                         <p id="fecha_pronostico_fecha">Escoge tu orden</p>
                         <img class="sep_peq" src="images/separador_peq.png">
@@ -405,12 +405,6 @@
                     e.preventDefault();
                 }, false);
             }, false);*/
-
-            window.addEventListener('load', function() {
-                document.body.addEventListener('touchmove', function(e) {
-                    e.preventDefault();
-                }, false);
-            }, false);
 
             var doubleTouchStartTimestamp = 0;
             $(document).bind("touchstart", function (event) {
