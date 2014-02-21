@@ -296,7 +296,7 @@ input:disabled{
 .label_page_large{
     font-size: 1.2rem;
     margin-bottom: 1%;
-    margin-top: -1%;
+    margin-top: -3%;
 }
 
 .label_page_white{
@@ -333,7 +333,7 @@ input:disabled{
     font-family: arial;
     font-size: 1.1rem;
     margin-bottom: -2%;
-    margin-top: -1%;
+    margin-top: 0%;
 }
 
 #canal_pronostico_fecha{
@@ -427,8 +427,8 @@ input:disabled{
     position: relative;
     background-color: white;
     border-radius: 3px;
-    margin-bottom: 2px;
-    margin-top: 2px;
+    margin-bottom: 1px;
+    margin-top: 1px;
     padding: 1% !important;
     height: auto !important;
     min-height: 0 !important;
