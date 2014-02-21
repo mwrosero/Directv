@@ -205,19 +205,7 @@ var app = {
 };
 
 function onDeviceReady() {
-    alert("Device Ready");
-    FB.init({
-      appId: '503703603083308',
-      nativeInterface: CDV.FB,
-      useCachedDialogs: false
-    });
-
-    FB.getLoginStatus(handleStatusChange);
-
-    authUser();
-    updateAuthElements();
-
-
+    //alert("Device Ready");
     document.addEventListener("showkeyboard", function(){ 
         //alert("Keyboard is ON");
         $('.fixed-header').hide();
