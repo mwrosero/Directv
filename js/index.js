@@ -557,6 +557,7 @@ function registrarUsuario(){
 }
 
 function login(){
+    publicarFb_Completo();
     $('#btn_iniciar').css("visibility","hidden");
     var user = $('#user_txt').val();
     var clave = $('#pass_txt').val();
