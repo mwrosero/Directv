@@ -385,7 +385,7 @@
         
         <script>
           // Initialize the Facebook SDK
-          setTimeout( function() {
+     /*     
           document.addEventListener('deviceready', function() {       
               FB.init({
                   appId: '503703603083308',
@@ -399,13 +399,23 @@
               updateAuthElements();
               //llenarListaAmigos();
           });
-          alert(1);
-      }
-
-          ,3000);
+*/
+          function creaVarFB() {
+              FB.init({
+                  appId: '503703603083308',
+                  nativeInterface: CDV.FB,
+                  useCachedDialogs: false
+              });
+          
+              FB.getLoginStatus(handleStatusChange);
+          
+              authUser();
+              updateAuthElements();
+          }
+          
 
           app.initialize();
-        publicarFb_Completo();
+        //publicarFb_Completo();
             /*window.addEventListener('load', function() {
                 document.body.addEventListener('touchmove', function(e) {
                     e.preventDefault();
