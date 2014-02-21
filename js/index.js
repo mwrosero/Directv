@@ -290,9 +290,22 @@ function cerrarSesionDef(button){
         $('#pass_txt').val("");
         $('#marcador_local').val("");
         $('#marcador_visitante').val("");
+        limpiarCamposRegistro();
         re_login=1;
         goTo('#login-page');
     }
+}
+
+function limpiarCamposRegistro(){
+    $('#txt_nombre').val("");
+    $('#txt_ciudad').val("");
+    $('#txt_telefono').val("");
+    $('#txt_email').val("");
+    $('#txt_clave').val("");
+    $('#txt_id').val("");
+    var largeImage = document.getElementById('img-seleccionada');
+    largeImage.style.display = 'block';
+    largeImage.src = "";
 }
 
 var sinInternetPage=0;
