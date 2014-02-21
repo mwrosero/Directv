@@ -299,6 +299,10 @@ input:disabled{
     margin-top: -3%;
 }
 
+.label_page_large_2{
+    font-size: 1.2rem;
+}
+
 .label_page_white{
     margin-top: 0;
     margin-bottom: 2%;

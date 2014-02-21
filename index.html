@@ -345,7 +345,7 @@
             </div>
             <div class="contenedor">
                 <div id="contenido">
-                    <h2 class="label_page">TABLA DE POSICIONES</h2>
+                    <h2 class="label_page label_page_large_2">TABLA DE POSICIONES</h2>
                     <img class="img_tabla" src="images/tabla_posiciones.png">
                 </div>
                 <img class="nada_mas" src="images/nada_mas_importa.png">
@@ -405,12 +405,6 @@
                     e.preventDefault();
                 }, false);
             }, false);*/
-
-            window.addEventListener('load', function() {
-                $('#bases-page').addEventListener('touchmove', function(e) {
-                    e.preventDefault();
-                }, false);
-            }, false);
 
             var doubleTouchStartTimestamp = 0;
             $(document).bind("touchstart", function (event) {
