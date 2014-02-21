@@ -326,7 +326,7 @@ input:disabled{
     color: white;
     font-family: arial;
     font-size: 1.1rem;
-    margin-bottom: 1%;
+    margin-bottom: -1%;
 }
 
 #canal_pronostico_fecha{
@@ -412,7 +412,7 @@ input:disabled{
 }
 
 .contenedor-equipos ul{
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -446,7 +446,7 @@ input:disabled{
     margin-left: 30%;
     font-family: arial;
     font-weight: bold;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 }
 
 .bases_leg p{
