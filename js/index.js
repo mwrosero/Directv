@@ -205,7 +205,19 @@ var app = {
 };
 
 function onDeviceReady() {
-    //alert("Device Ready");
+    alert("Device Ready");
+    FB.init({
+      appId: '503703603083308',
+      nativeInterface: CDV.FB,
+      useCachedDialogs: false
+    });
+
+    FB.getLoginStatus(handleStatusChange);
+
+    authUser();
+    updateAuthElements();
+
+
     document.addEventListener("showkeyboard", function(){ 
         //alert("Keyboard is ON");
         $('.fixed-header').hide();
@@ -919,7 +931,7 @@ function guardarPronosticoCompleto(){
 function publicarFb(){
     var res_loc = $('#marcador_local').val();
     var res_vis = $('#marcador_visitante').val();
-    
+
     //alert('Mi pronóstico DIRECTV por la fecha #'+num_fecha+' del Campeonato es: '+nombre_eq_local+': '+res_loc+' vs. '+nombre_eq_visitante+': '+res_vis);
 
     if(sesion_activa){
