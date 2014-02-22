@@ -11,7 +11,7 @@ var permissions = ['user_status', 'publish_checkins', 'user_likes'];
 
 //Detect when Facebook tells us that the user's session has been returned
 function authUser() {
-  alert('auth');
+ // alert('auth');
   FB.Event.subscribe('auth.statusChange', handleStatusChange);
 }
 
@@ -60,7 +60,7 @@ function handleStatusChange(session) {
       document.body.className = 'not_connected';
       sesion_activa=0;
       //Funcion para acceder a facebook
-      //promptLogin();
+      promptLogin();
       clearAction();
     }
     alert(sesion_activa);
