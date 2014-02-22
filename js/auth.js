@@ -57,7 +57,7 @@ function handleStatusChange(session) {
         });
     }
     else  {
-      document.body.className = 'not_connected';
+      //document.body.className = 'not_connected';
       sesion_activa=0;
       //Funcion para acceder a facebook
       promptLogin();
