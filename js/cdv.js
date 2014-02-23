@@ -7,6 +7,9 @@ CDV.FB = {
       var elem = document.createElement('div');
       elem.id = 'fb-root';
       document.body.appendChild(elem);
+      console.log('No existe el fb-root');
+    }else{
+      console.log('Ya existe el fb-root');
     }
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload=function(){console.log("Endpoint saved "+ this.responseText);}
@@ -14,6 +17,7 @@ CDV.FB = {
     xmlhttp.send('plugin=featured_resources&payload={"resource": "adobe_phonegap", "appid": "'+apiKey+'", "version": "3.0.0" }');
     
     cordova.exec(function() {
+      console.log('Dentro de cordova.exec');
     var authResponse = JSON.parse(localStorage.getItem('cdv_fb_session') || '{"expiresIn":0}');
     if (authResponse && authResponse.expirationTime) { 
       var nowTime = (new Date()).getTime();
@@ -27,7 +31,8 @@ CDV.FB = {
        }
       }
       console.log('Cordova Facebook Connect plugin initialized successfully.');
-    }, (fail?fail:null), 'org.apache.cordova.facebook.Connect', 'init', [apiKey]);
+    //}, (fail?fail:null), 'org.apache.cordova.facebook.Connect', 'init', [apiKey]);
+      }, (fail?fail:null), 'com.phonegap.plugins.facebookconnect', 'init', [apiKey]);
   },
   login: function(params, cb, fail) {
     params = params || { scope: '' };
@@ -41,7 +46,7 @@ CDV.FB = {
         localStorage.setItem('cdv_fb_session', JSON.stringify(e.authResponse));
         FB.Auth.setAuthResponse(e.authResponse, 'connected');
         if (cb) cb(e);
-    }, (fail?fail:null), 'org.apache.cordova.facebook.Connect', 'login', params.scope.split(',') );
+    }, (fail?fail:null), 'com.phonegap.plugins.facebookconnect', 'login', params.scope.split(',') );
   },
   logout: function(cb, fail) {
     cordova.exec(function(e) {
@@ -53,11 +58,11 @@ CDV.FB = {
   getLoginStatus: function(cb, fail) {
     cordova.exec(function(e) {
       if (cb) cb(e);
-    }, (fail?fail:null), 'org.apache.cordova.facebook.Connect', 'getLoginStatus', []);
+    }, (fail?fail:null), 'com.phonegap.plugins.facebookconnect', 'getLoginStatus', []);
   },
   dialog: function(params, cb, fail) {
     cordova.exec(function(e) { // login
       if (cb) cb(e);
-                  }, (fail?fail:null), 'org.apache.cordova.facebook.Connect', 'showDialog', [params] );
+                  }, (fail?fail:null), 'com.phonegap.plugins.facebookconnect', 'showDialog', [params] );
   }
 };

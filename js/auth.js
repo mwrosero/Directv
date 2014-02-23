@@ -17,8 +17,8 @@ function authUser() {
 
 // Handle status changes
 function handleStatusChange(session) {
-    console.log('Got the user\'s session: ' + JSON.stringify(session));
-    alert(session.authResponse);
+    console.log('M:Got the user\'s session: ' + JSON.stringify(session));
+    alert('session.authResponse:'+session.authResponse);
     if (session.authResponse) {
       alert('ok');
         //document.body.className = 'connected';
@@ -58,14 +58,14 @@ function handleStatusChange(session) {
         });
     }
     else  {
-      alert('error');
+      alert('dio error');
       //document.body.className = 'not_connected';
       sesion_activa=0;
       //Funcion para acceder a facebook
-      promptLogin();
+      //promptLogin();
       clearAction();
     }
-    alert(sesion_activa);
+    //alert(sesion_activa);
 }
 
 //Check the current permissions to set the page elements.
