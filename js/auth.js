@@ -11,15 +11,16 @@ var permissions = ['user_status', 'publish_checkins', 'user_likes'];
 
 //Detect when Facebook tells us that the user's session has been returned
 function authUser() {
- // alert('auth');
+  alert('auth');
   FB.Event.subscribe('auth.statusChange', handleStatusChange);
 }
 
 // Handle status changes
 function handleStatusChange(session) {
     console.log('Got the user\'s session: ' + JSON.stringify(session));
-    
+    alert(session.authResponse);
     if (session.authResponse) {
+      alert('ok');
         //document.body.className = 'connected';
         sesion_activa=1;
         //Fetch user's id, name, and picture
@@ -57,6 +58,7 @@ function handleStatusChange(session) {
         });
     }
     else  {
+      alert('error');
       //document.body.className = 'not_connected';
       sesion_activa=0;
       //Funcion para acceder a facebook
