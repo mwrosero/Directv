@@ -207,6 +207,7 @@ var app = {
 function onDeviceReady() {
     //alert("Device Ready");
     alert('UUID:'+device.uuid);
+    creaVarFB();
     document.addEventListener("showkeyboard", function(){ 
         //alert("Keyboard is ON");
         $('.fixed-header').hide();
