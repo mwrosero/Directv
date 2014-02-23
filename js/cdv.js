@@ -3,7 +3,6 @@ var cordova = window.cordova || window.Cordova;
 CDV.FB = {
   init: function(apiKey, fail) {
     // create the fb-root element if it doesn't exist
-    alert('dentro de CDV.js');
     if (!document.getElementById('fb-root')) {
       var elem = document.createElement('div');
       elem.id = 'fb-root';
