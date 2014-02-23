@@ -3,18 +3,20 @@ var cordova = window.cordova || window.Cordova;
 CDV.FB = {
   init: function(apiKey, fail) {
     // create the fb-root element if it doesn't exist
+    alert('init');
     if (!document.getElementById('fb-root')) {
       var elem = document.createElement('div');
       elem.id = 'fb-root';
       document.body.appendChild(elem);
     }
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onload=function(){console.log("Endpoint saved "+ this.responseText);}
+    xmlhttp.onload=function(){console.log("M:Endpoint saved "+ this.responseText);}
     xmlhttp.open("POST", "https://www.facebook.com/impression.php", true);
     xmlhttp.send('plugin=featured_resources&payload={"resource": "adobe_phonegap", "appid": "'+apiKey+'", "version": "3.0.0" }');
     
     cordova.exec(function() {
     var authResponse = JSON.parse(localStorage.getItem('cdv_fb_session') || '{"expiresIn":0}');
+    alert('authResponse:'+authResponse);
     if (authResponse && authResponse.expirationTime) { 
       var nowTime = (new Date()).getTime();
       if (authResponse.expirationTime > nowTime) { 

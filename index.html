@@ -381,7 +381,7 @@
       
         <script src="js/cdv.js"></script>
         
-        <script src="js/fb.js"></script>          
+        <!--<script src="js/fb.js"></script>-->          
         
         <script src="js/ui.js"></script>
         <script src="js/auth.js"></script>
@@ -391,7 +391,6 @@
         
         <script>
           // Initialize the Facebook SDK
-          
           document.addEventListener('deviceready', function() {       
               FB.init({
                   appId: '503703603083308',
@@ -405,7 +404,6 @@
               updateAuthElements();
               //llenarListaAmigos();
           });
-
           function creaVarFB() {
               FB.init({
                   appId: '503703603083308',
@@ -418,16 +416,7 @@
               authUser();
               updateAuthElements();
           }
-          
-
           app.initialize();
-        //publicarFb_Completo();
-            /*window.addEventListener('load', function() {
-                document.body.addEventListener('touchmove', function(e) {
-                    e.preventDefault();
-                }, false);
-            }, false);*/
-
             var doubleTouchStartTimestamp = 0;
             $(document).bind("touchstart", function (event) {
                 var now = +(new Date());
